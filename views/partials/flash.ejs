@@ -1,0 +1,10 @@
+<% if (success.length > 0) { %>
+  <div id="flash-success" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-700 py-2 px-4 rounded-md shadow-md">
+    <%= success %>
+  </div>
+<% } %>
+<% if (error.length > 0) { %>
+  <div id="flash-error" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-700 py-2 px-4 rounded-md shadow-md">
+    <%= error %>
+  </div>
+<% } %>

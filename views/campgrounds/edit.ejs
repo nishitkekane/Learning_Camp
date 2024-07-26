@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Campground</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Brand -->
+            <a href="#" class="text-white text-xl font-bold">Yelp Camp</a>
+            <!-- Navigation Links -->
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-300 hover:text-white">Home</a>
+                <a href="/campgrounds" class="text-gray-300 hover:text-white">Campgrounds</a>
+                <a href="/campgrounds/new" class="text-gray-300 hover:text-white">New Campground</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto p-4">
+        <h2 class="text-2xl font-bold mb-4 text-center">Edit Campground</h2>
+        <form action="/campgrounds/<%=camp._id %>?_method=PUT" method="POST" class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Campground Title:</label>
+                <input type="text" id="title" name="title" value="<%= camp.title %>" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-black focus:ring-1 focus:ring-black">
+            </div>
+            <div class="mb-4">
+                <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+                <input type="text" id="location" name="location" value="<%= camp.location %>" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-black focus:ring-1 focus:ring-black">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+                <textarea id="description" name="description" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-black focus:ring-1 focus:ring-black"><%= camp.description %></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image URL:</label>
+                <input type="text" id="image" name="image" value="<%= camp.image %>" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-black focus:ring-1 focus:ring-black">
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price:</label>
+                <div class="flex">
+                    <div class="relative flex-1">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                            $
+                        </div>
+                        <input type="number" id="price" name="price" value="<%= camp.price %>" required class="shadow appearance-none border rounded w-full py-2 pl-8 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-black focus:ring-1 focus:ring-black">
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

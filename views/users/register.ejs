@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="w-full max-w-md mx-auto mt-10">
+    <div class="bg-white shadow-md rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Register</h2>
+        <form id="registerForm" action="/register" method="POST" class="space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" name="username" id="username" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <p id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</p>
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="password" id="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <p id="passwordError" class="text-red-500 text-sm mt-1 hidden">Password must be at least 6 characters long.</p>
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        let isValid = true;
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Validate email
+        if (!emailRegex.test(emailInput.value)) {
+            emailError.classList.remove('hidden');
+            emailInput.classList.add('border-red-500');
+            emailInput.classList.remove('border-green-500');
+            isValid = false;
+        } else {
+            emailError.classList.add('hidden');
+            emailInput.classList.add('border-green-500');
+            emailInput.classList.remove('border-red-500');
+        }
+
+        // Validate password
+        if (passwordInput.value.length < 6) {
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('border-red-500');
+            passwordInput.classList.remove('border-green-500');
+            isValid = false;
+        } else {
+            passwordError.classList.add('hidden');
+            passwordInput.classList.add('border-green-500');
+            passwordInput.classList.remove('border-red-500');
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+</script>

@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="w-full max-w-md mx-auto mt-10">
+    <div class="bg-white shadow-md rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
+        <form id="loginForm" action="/login" method="POST" class="space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" name="username" id="username" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="password" id="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+
+        // Simple validation: Ensure fields are not empty
+        if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
+            alert('Please fill in both fields.');
+            event.preventDefault(); // Prevent form from submitting
+        }
+    });
+</script>
